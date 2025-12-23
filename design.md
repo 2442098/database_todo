@@ -14,11 +14,11 @@
 
 ```mermaid
 graph TD
-    User((User)) -->|HTTP/HTTPS| WebContainer[Web App Container<br>(Streamlit/Flask)]
+    User((User)) -->|HTTP/HTTPS| WebContainer["Web App Container<br>(Streamlit/Flask)"]
     
-    subgraph Docker Network
-        WebContainer -->|TCP 5432| DBContainer[Database Container<br>(PostgreSQL)]
-        DBContainer --> Volume[Persistent Storage<br>(Docker Volume)]
+    subgraph "Docker Network"
+        WebContainer -->|TCP 5432| DBContainer["Database Container<br>(PostgreSQL)"]
+        DBContainer --> Volume["Persistent Storage<br>(Docker Volume)"]
     end
 ```
 
@@ -200,4 +200,6 @@ WHERE id IN (
 *   **適用**:
     *   `tasks` テーブルにおいて、`user_id` から `username` が導出できますが、`tasks` テーブルには `username` カラムを持たせず、`users` テーブルに分離しています。
     *   これにより、ユーザー名が変更された場合でも `users` テーブルのみを更新すればよく、データの不整合を防ぎます。
+
+
 
